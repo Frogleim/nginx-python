@@ -1,1 +1,1 @@
-python-nginx
+python_nginx

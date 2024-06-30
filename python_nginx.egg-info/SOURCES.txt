@@ -1,7 +1,9 @@
+LICENSE
+README.md
 setup.py
-python-nginx/__init__.py
-python-nginx/cli.py
-python-nginx/core.py
+python_nginx/__init__.py
+python_nginx/cli.py
+python_nginx/core.py
 python_nginx.egg-info/PKG-INFO
 python_nginx.egg-info/SOURCES.txt
 python_nginx.egg-info/dependency_links.txt
