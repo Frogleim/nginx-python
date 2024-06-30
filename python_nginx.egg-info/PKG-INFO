@@ -1,0 +1,5 @@
+Metadata-Version: 2.1
+Name: python_nginx
+Version: 0.1.0
+Requires-Dist: jinja2
+Requires-Dist: requests

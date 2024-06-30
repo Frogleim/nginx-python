@@ -1,0 +1,10 @@
+setup.py
+python-nginx/__init__.py
+python-nginx/cli.py
+python-nginx/core.py
+python-nginx.egg-info/PKG-INFO
+python-nginx.egg-info/SOURCES.txt
+python-nginx.egg-info/dependency_links.txt
+python-nginx.egg-info/entry_points.txt
+python-nginx.egg-info/requires.txt
+python-nginx.egg-info/top_level.txt
