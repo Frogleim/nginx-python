@@ -1,4 +1,5 @@
-# Python-nginx Testing Version
+
+# Python-nginx
 
 ## Overview
 
@@ -17,3 +18,82 @@ Python-nginx is a Python package designed to automatically and easily configure 
 Install Python-nginx via pip:
 ```bash
 pip install python-nginx
+```
+
+## Usage
+
+### Basic Setup
+
+Here’s a quick example of how to set up Nginx for a FastAPI application:
+
+```python
+from python_nginx.core import create_nginx_config, manage_service
+
+# Define your server name and application port
+server_name = 'example.com'
+app_port = 8000
+
+# Generate the Nginx configuration
+create_nginx_config(server_name, app_port)
+
+# Start the Nginx service
+manage_service('start')
+```
+
+### Command-Line Interface
+
+Python-nginx also provides a CLI for easy management:
+```bash
+python_nginx setup --server-name example.com --app-port 8000
+python_nginx start
+python_nginx stop
+python_nginx reload
+```
+
+## Configuration File Template
+
+The default Nginx configuration template used by Python-nginx:
+```nginx
+server {
+    listen 80;
+    server_name {{ server_name }};
+
+    location / {
+        proxy_pass http://127.0.0.1:{{ app_port }};
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    error_page 404 /404.html;
+    location = /404.html {
+        internal;
+    }
+
+    error_page 500 502 503 504 /50x.html;
+    location = /50x.html {
+        internal;
+    }
+}
+```
+
+## Contributing
+
+Contributions are welcome! Please read our [contributing guide](CONTRIBUTING.md) to get started.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## GitHub Actions Workflow
+
+This repository includes a GitHub Actions workflow to automatically test and publish the package to PyPI. For more information, see [the workflow file](.github/workflows/python-package.yml).
+
+## Contact
+
+For any questions or feedback, please contact [your.email@example.com](mailto:your.email@example.com).
+
+---
+
+With Python-nginx, deploying your Python web applications has never been easier. Simplify your server configuration and focus on building great applications!
