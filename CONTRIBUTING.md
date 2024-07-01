@@ -1,4 +1,3 @@
-
 # Contributing to Python-nginx
 
 First off, thank you for considering contributing to Python-nginx! It's people like you that make this project possible and better.
