@@ -1,8 +1,8 @@
-# Python-nginx
+# nginx-python
 
 ## Overview
 
-Python-nginx is a Python package designed to automatically and easily configure and host your Python web applications (Django, Flask, FastAPI) with Nginx using simple Python code. This tool aims to streamline the deployment process, reducing the complexity and potential for errors associated with manual configuration.
+nginx-python is a Python package designed to automatically and easily configure and host your Python web applications (Django, Flask, FastAPI) with Nginx using simple Python code. This tool aims to streamline the deployment process, reducing the complexity and potential for errors associated with manual configuration.
 
 ## Features
 
@@ -95,4 +95,4 @@ For any questions or feedback, please contact [barseghyangor8@gmail.com](mailto:
 
 ---
 
-With Python-nginx, deploying your Python web applications has never been easier. Simplify your server configuration and focus on building great applications!
+With nginx-python, deploying your Python web applications has never been easier. Simplify your server configuration and focus on building great applications!
