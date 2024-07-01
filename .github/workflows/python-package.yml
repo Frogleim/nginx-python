@@ -1,33 +1,29 @@
-name: Upload Python Package to PyPI when a Release is Created
+name: Upload Python Package
 
 on:
   release:
-    types: [created]
+    types: [published]
 
 jobs:
-  pypi-publish:
-    name: Publish release to PyPI
+  deploy:
+
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read  # Make sure you have this permission
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.x"
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install setuptools wheel
-      - name: Build package
-        run: |
-          python setup.py sdist bdist_wheel
-      - name: Publish package distributions to PyPI
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-        run: |
-          pip install twine
-          twine upload dist/*
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install setuptools wheel twine
+    - name: Build and publish
+      env:
+        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+      run: |
+        git fetch --all --tags
+        python setup.py sdist bdist_wheel
+        twine upload dist/*
