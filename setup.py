@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name='python_nginx',
+    name='nginx_python',
     version='0.1.0',
     packages=find_packages(),
     include_package_data=True,
@@ -15,7 +15,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'python_nginx=python_nginx.cli:main',
+            'nginx_python=nginx_python.cli:main',
         ],
     },
     long_description=long_description,

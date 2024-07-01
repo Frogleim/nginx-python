@@ -8,9 +8,11 @@ jobs:
   pypi-publish:
     name: Publish release to PyPI
     runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/nginx-python
     permissions:
       id-token: write
-      contents: read  # Make sure you have this permission
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
@@ -23,11 +25,6 @@ jobs:
           pip install setuptools wheel
       - name: Build package
         run: |
-          python setup.py sdist bdist_wheel
+          python setup.py sdist bdist_wheel  # Could also be python -m build
       - name: Publish package distributions to PyPI
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-        run: |
-          pip install twine
-          twine upload dist/*
+        uses: pypa/gh-action-pypi-publish@release/v1

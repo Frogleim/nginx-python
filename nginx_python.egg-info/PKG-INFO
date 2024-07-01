@@ -1,3 +1,11 @@
+Metadata-Version: 2.1
+Name: nginx_python
+Version: 0.1.0
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: jinja2
+Requires-Dist: requests
+
 # nginx-python
 
 ## Overview
@@ -16,7 +24,7 @@ nginx-python is a Python package designed to automatically and easily configure 
 
 Install Python-nginx via pip:
 ```bash
-pip install nginx-python
+pip install python-nginx
 ```
 
 ## Usage

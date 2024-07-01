@@ -1,4 +1,4 @@
-#!/home/frogleim/Desktop/projects/python_nginx/test_env/bin/python3
+#!/home/frogleim/Desktop/projects/nginx_python/test_env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

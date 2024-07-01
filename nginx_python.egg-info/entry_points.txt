@@ -1,0 +1,2 @@
+[console_scripts]
+nginx_python = nginx_python.cli:main

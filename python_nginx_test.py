@@ -1,6 +1,6 @@
 import unittest
 import os
-from python_nginx.core import create_nginx_config, manage_service
+from nginx_python.core import create_nginx_config, manage_service
 
 class TestPythonNginx(unittest.TestCase):
 

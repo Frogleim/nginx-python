@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.py
+nginx_python/__init__.py
+nginx_python/cli.py
+nginx_python/core.py
+nginx_python.egg-info/PKG-INFO
+nginx_python.egg-info/SOURCES.txt
+nginx_python.egg-info/dependency_links.txt
+nginx_python.egg-info/entry_points.txt
+nginx_python.egg-info/requires.txt
+nginx_python.egg-info/top_level.txt
