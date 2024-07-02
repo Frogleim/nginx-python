@@ -4,6 +4,7 @@ setup.py
 nginx_python/__init__.py
 nginx_python/cli.py
 nginx_python/core.py
+nginx_python/template.py
 nginx_python.egg-info/PKG-INFO
 nginx_python.egg-info/SOURCES.txt
 nginx_python.egg-info/dependency_links.txt

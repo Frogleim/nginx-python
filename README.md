@@ -39,6 +39,29 @@ create_nginx_config(server_name, app_port)
 manage_service('start')
 ```
 
+### Set up SSL certificate configuration path
+
+```python
+from nginx_python.core import create_nginx_config, manage_service
+
+# Define your Nginx conf setup
+server_name = 'example.com'
+app_name = 'django'
+app_port = 8000
+use_ssl = True
+ssl_certificate_path='your_certificate_path'
+ssl_certificate_key_path = 'your_certificate_key_path'
+# Generate the Nginx configuration
+create_nginx_config(server_name=server_name, app_port=app_port, 
+                    app_name=app_name, use_ssl=use_ssl, 
+                    ssl_certificate_path=ssl_certificate_path, 
+                    ssl_certificate_key_path=ssl_certificate_key_path)
+
+# Start the Nginx service
+manage_service('start')
+```
+
+
 ### Command-Line Interface
 
 Python-nginx also provides a CLI for easy management:
@@ -58,7 +81,7 @@ server {
     server_name {{ server_name }};
 
     location / {
-        proxy_pass http://127.0.0.1:{{ app_port }};
+        proxy_pass http://{{ app_name }}:{{ app_port }};
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
