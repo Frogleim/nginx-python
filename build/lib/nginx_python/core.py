@@ -1,41 +1,31 @@
 import os
 from jinja2 import Template
-from .template import NGINX_TEMPLATE
+
+NGINX_TEMPLATE = """
+server {
+    listen 80;
+    server_name {{ server_name }};
+
+    location / {
+        proxy_pass http://127.0.0.1:{{ app_port }};
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+"""
 
 
-def create_nginx_config(
-        server_name,
-        app_port,
-        app_name,
-        use_ssl=False,
-        ssl_certificate_path=None,
-        ssl_certificate_key_path=None,
-        output_path='nginx_conf',
-        symlink_path=None):
+def create_nginx_config(server_name, app_port, output_path='nginx.conf', symlink_path=None):
     template = Template(NGINX_TEMPLATE)
-    config = template.render(
-        server_name=server_name,
-        app_port=app_port,
-        use_ssl=use_ssl,
-        app_name=app_name,
-        ssl_certificate_path=ssl_certificate_path,
-        ssl_certificate_key_path=ssl_certificate_key_path
-    )
+    config = template.render(server_name=server_name, app_port=app_port)
 
-    # Ensure the output directory exists
-    if not os.path.exists(output_path):
-        os.makedirs(output_path)
-
-    # Write the configuration file
-    config_file_path = os.path.join(output_path, 'nginx.conf')
-    with open(config_file_path, 'w') as f:
+    with open(output_path, 'w') as f:
         f.write(config)
 
-    # Create a symbolic link if specified
     if symlink_path:
-        if os.path.exists(symlink_path):
-            os.remove(symlink_path)
-        os.symlink(config_file_path, symlink_path)
+        os.symlink(output_path, symlink_path)
 
 
 def manage_service(action):

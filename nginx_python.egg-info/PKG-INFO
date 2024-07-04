@@ -54,7 +54,7 @@ from nginx_python.core import create_nginx_config, manage_service
 
 # Define your Nginx conf setup
 server_name = 'example.com'
-app_name = 'django'
+app_name = 'fastapi'
 app_port = 8000
 use_ssl = True
 ssl_certificate_path='your_certificate_path'
